@@ -2,22 +2,27 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "skipLibCheck": true,
     "noEmit": true,
     "allowJs": true,
-    "typeRoots": ["./node_modules"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
-      "react": ["./node_modules/react"],
+      "react": ["./node_modules/react/index.d.ts"],
       "react/jsx-runtime": ["./node_modules/react/jsx-runtime.d.ts"],
-      "motion/react": ["./node_modules/motion/react"]
+      "react/jsx-dev-runtime": ["./node_modules/react/jsx-dev-runtime.d.ts"],
+      "motion/react": ["./node_modules/motion/react/index.d.ts"]
     }
   },
   "include": [
-    "components/**/*"
+    "components/**/*",
+    "node_modules/react/*.d.ts",
+    "node_modules/motion/react/*.d.ts"
   ]
 }
