@@ -1,0 +1,16 @@
+.venv/
+.venv-*/
+node_modules/
+!node_modules/react/
+!node_modules/react/**
+!node_modules/motion/
+!node_modules/motion/**
+
+dist/
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example

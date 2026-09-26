@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101211" />
+    <meta name="description" content="M.V.E. Master Video Editor, an AI-assisted creative editing studio." />
+    <title>M.V.E. | Master Video Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>.app-shell[hidden],[data-admin-only][hidden]{display:none!important}.voice-greeting{margin:0 0 8px 37px;padding:3px 7px;border:1px solid #414a3c;border-radius:3px;background:#20271f;color:#d6e9ad;font-size:8px}</style>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <svg class="motion-field" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="snake-a" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#d4ff52" stop-opacity=".2"/><stop offset=".5" stop-color="#55e0cc" stop-opacity=".05"/><stop offset="1" stop-color="#f5ad71" stop-opacity=".13"/></linearGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <text class="watermark" x="960" y="430">M.V.E.</text>
+      <path class="snake snake-one" d="M-100 560 C 120 350, 260 690, 470 470 S 790 240, 1000 420 S 1280 650, 1530 340" />
+      <path class="snake snake-two" d="M-80 650 C 160 820, 300 390, 520 540 S 850 780, 1020 550 S 1280 280, 1510 500" />
+      <path class="snake snake-three" d="M-50 250 C 190 450, 300 170, 520 290 S 880 420, 1050 220 S 1270 120, 1510 300" />
+    </svg>
+    <div class="app-shell" data-view="editor" data-state="ready" hidden>
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#editor" data-view-link="editor" aria-label="M.V.E. Master Video Editor">
+          <span class="brand-mark"><span></span><span></span><span></span></span>
+          <span class="brand-copy"><strong>M.V.E.</strong><small>MASTER VIDEO EDITOR</small></span>
+        </a>
+        <button class="workspace-switcher" type="button"><span class="workspace-avatar">S</span><span><b>Studio North</b><small>Creator workspace</small></span><span class="chevron">⌄</span></button>
+        <div class="nav-label">WORKSPACE</div>
+        <nav class="primary-nav">
+          <button class="nav-item" data-view-link="dashboard"><span class="nav-icon">◫</span>Overview</button>
+          <button class="nav-item active" data-view-link="editor"><span class="nav-icon">▤</span>Editor <span class="nav-dot"></span></button>
+          <button class="nav-item" data-view-link="generate"><span class="nav-icon">✳</span>Generate video</button>
+          <button class="nav-item" data-view-link="shorts"><span class="nav-icon">▯</span>Shorts studio</button>
+          <button class="nav-item" data-view-link="audio"><span class="nav-icon">∿</span>Audio lab</button>
+          <button class="nav-item" data-view-link="avatar"><span class="nav-icon">◎</span>Avatar studio</button>
+          <div class="nav-label nav-label-spaced">INTELLIGENCE</div>
+          <button class="nav-item" data-view-link="dna"><span class="nav-icon">⌁</span>Creator intelligence</button>
+          <button class="nav-item" data-view-link="analytics"><span class="nav-icon">▥</span>Analytics</button>
+          <div class="nav-label nav-label-spaced" data-admin-only hidden>MANAGEMENT</div>
+          <button class="nav-item" data-view-link="admin" data-admin-only hidden><span class="nav-icon">▣</span>Admin</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="storage"><div class="storage-heading"><span>Storage</span><span>68%</span></div><div class="storage-track"><span></span></div><small>68.2 GB of 100 GB</small></div>
+          <button class="nav-item" data-view-link="settings"><span class="nav-icon">⚙</span>Settings</button>
+          <button class="profile-row" data-view-link="profile"><span class="profile-avatar">SJ</span><span><b>Sanjay J.</b><small>Pro creator</small></span><span class="chevron">···</span></button>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Studio</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">Editor</strong><span class="save-status"><i></i><span id="save-label">All changes saved</span></span></div>
+          <div class="top-actions">
+            <button class="icon-button help-button" title="Keyboard shortcuts" aria-label="Keyboard shortcuts">⌘</button>
+            <button class="icon-button notification-button" title="Notifications" aria-label="Notifications">♧<i></i></button>
+            <span class="top-divider"></span>
+            <button class="share-button" id="share-project">↗ <span>Share</span></button>
+            <button class="export-button" id="export-project"><span>Export</span><span>↗</span></button>
+            <button class="logout-button" id="logout-button" title="Sign out">Sign out</button>
+          </div>
+        </header>
+
+        <div class="content-area" id="content-area">
+          <section class="editor-view view-panel" data-panel="editor">
+            <div class="project-heading">
+              <div><div class="eyebrow"><span class="eyebrow-line"></span>CREATIVE WORKSPACE <span class="project-id">· 04:28</span></div><h1>Untitled project <button class="rename-button" id="rename-project" title="Rename project">✎</button></h1></div>
+              <div class="project-actions"><button class="quiet-button" id="undo-button" title="Undo (Ctrl+Z)" disabled>↶</button><button class="quiet-button" id="redo-button" title="Redo (Ctrl+Shift+Z)" disabled>↷</button><span class="action-separator"></span><button class="quiet-button" id="project-menu" title="More options">···</button></div>
+            </div>
+
+            <div class="editor-grid">
+              <section class="preview-column" aria-label="Video preview and timeline">
+                <div class="preview-frame" id="preview-frame">
+                  <video id="video-preview" playsinline></video>
+                  <div class="preview-placeholder" id="preview-placeholder">
+                    <div class="preview-orbit orbit-one"></div><div class="preview-orbit orbit-two"></div>
+                    <div class="preview-monogram">M<span>.</span>V<span>.</span>E<span>.</span></div>
+                    <div class="preview-caption"><span class="live-mark"></span> PREVIEW CANVAS <span>·</span> 16:9</div>
+                    <div class="drop-hint"><span class="upload-glyph">↑</span><b>Drop a clip to begin</b><small>Your creative space is ready</small></div>
+                  </div>
+                  <div class="preview-overlay"><span class="preview-badge">PREVIEW</span><button class="preview-fit" id="fit-toggle">Fit ⌄</button></div>
+                  <div class="preview-center-control"><button id="play-button" aria-label="Play preview">▶</button></div>
+                  <div class="preview-bottom"><span id="preview-time">00:00:00:00</span><span>·</span><span>24 FPS</span><span class="preview-bottom-spacer"></span><button class="preview-small" title="Mute preview">⌁</button><button class="preview-small" title="Fullscreen" id="fullscreen-button">⛶</button></div>
+                  <input type="file" id="video-input" accept="video/*" hidden />
+                  <input type="file" id="reference-input" accept="video/*" hidden />
+                  <div class="drop-overlay" id="drop-overlay"><b>Release to add to timeline</b></div>
+                </div>
+
+                <div class="transport-bar">
+                  <div class="transport-group"><button class="transport-icon" id="step-back" title="Previous frame">|◀</button><button class="transport-play" id="transport-play" aria-label="Play">▶</button><button class="transport-icon" id="step-forward" title="Next frame">▶|</button></div>
+                  <div class="transport-time"><strong id="transport-time">00:00</strong><span>/</span><span id="duration-time">00:00</span></div>
+                  <div class="transport-tools"><button id="zoom-out" title="Zoom out">−</button><span id="zoom-label">100%</span><button id="zoom-in" title="Zoom in">+</button><span class="tool-divider"></span><button title="Timeline settings">☷</button></div>
+                </div>
+
+                <div class="timeline-wrap">
+                  <div class="timeline-ruler"><div class="ruler-spacer"><button class="add-track" id="add-track">＋ Track</button></div><div class="ruler-scale" id="ruler-scale"><span>00:00</span><span>00:10</span><span>00:20</span><span>00:30</span><span>00:40</span><span>00:50</span><span>01:00</span></div></div>
+                  <div class="timeline-body" id="timeline-body">
+                    <div class="playhead" id="playhead"><i></i></div>
+                    <div class="track-row"><div class="track-label"><span class="track-type video-type">▣</span><span>Video</span><button>⌄</button></div><div class="track-lane" data-track="Video"><button class="empty-clip video-clip" id="video-clip"><span class="clip-placeholder-icon">▰</span><span id="clip-label">Drop video here or <u>browse</u></span><span class="clip-wave"></span></button></div></div>
+                    <div class="track-row"><div class="track-label"><span class="track-type text-type">T</span><span>Text</span><button>⌄</button></div><div class="track-lane" data-track="Text"><div class="empty-lane-hint">+ Add title</div></div></div>
+                    <div class="track-row"><div class="track-label"><span class="track-type audio-type">∿</span><span>Audio</span><button>⌄</button></div><div class="track-lane" data-track="Audio"><div class="empty-lane-hint">+ Add audio</div></div></div>
+                    <div class="track-row"><div class="track-label"><span class="track-type caption-type">CC</span><span>Captions</span><button>⌄</button></div><div class="track-lane" data-track="Captions"><div class="empty-lane-hint">+ Add captions</div></div></div>
+                  </div>
+                </div>
+              </section>
+
+              <aside class="tools-panel" aria-label="Editing tools">
+                <div class="panel-tabs"><button class="panel-tab active" data-tool-tab="media">Media <span>1</span></button><button class="panel-tab" data-tool-tab="edit">Edit</button><button class="panel-tab" data-tool-tab="ai">AI tools <span class="ai-spark">✳</span></button></div>
+                <div class="tool-content" id="tool-content">
+                  <div class="asset-heading"><div><h2>Project media</h2><span>0 assets</span></div><button class="add-media" id="add-media" title="Import media">＋</button></div>
+                  <button class="import-card" id="import-card"><span class="import-icon">↑</span><span><b>Import media</b><small>Video, audio, or image</small></span><span class="import-arrow">↗</span></button>
+                  <div class="media-filters"><button class="filter active">All <span>0</span></button><button class="filter">Video</button><button class="filter">Audio</button></div>
+                  <div class="media-empty"><span class="empty-stack">▱</span><b>No media yet</b><small>Import a clip or drop files<br/>anywhere in the preview.</small></div>
+                  <div class="assistant-card" id="assistant-card">
+                    <button class="voice-greeting" id="voice-greeting" title="Play Tamil welcome">◖ <span>Hear Tamil welcome</span></button>
+                    <div class="assistant-head"><div class="assistant-avatar"><span class="assistant-hair"></span><span class="assistant-face">•ᴗ•</span><span class="assistant-cheek left"></span><span class="assistant-cheek right"></span></div><div><b>M.V.E. assistant</b><small><i></i> Ready when you are</small></div><button title="Assistant options">···</button></div>
+                    <p id="assistant-message">A little structure goes a long way. Add a clip and I’ll help shape the story.</p>
+                    <button class="assistant-suggestion" id="analyze-button"><span>✳</span> Analyze my footage <span>→</span></button>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <section class="workflow-strip" aria-label="AI editing workflow">
+              <div class="workflow-title"><span class="workflow-spark">✳</span><span><b>AI edit flow</b><small>From raw footage to ready</small></span></div>
+              <div class="workflow-steps"><span class="workflow-step done"><i>✓</i>Upload</span><span class="workflow-connector done"></span><span class="workflow-step current"><i>02</i>Analyze</span><span class="workflow-connector"></span><span class="workflow-step"><i>03</i>Rough cut</span><span class="workflow-connector"></span><span class="workflow-step"><i>04</i>Refine</span><span class="workflow-connector"></span><span class="workflow-step"><i>05</i>Export</span></div>
+              <button class="flow-details" title="View workflow details">↗</button>
+            </section>
+          </section>
+          <section class="dynamic-view view-panel" data-panel="dynamic" hidden></section>
+        </div>
+      </main>
+    </div>
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <dialog class="modal" id="modal"><div class="modal-top"><span class="modal-kicker">M.V.E. STUDIO</span><button class="modal-close" id="modal-close" aria-label="Close">×</button></div><div class="modal-content" id="modal-content"></div></dialog>
+  </body>
+</html>
