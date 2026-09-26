@@ -1,5 +1,5 @@
 export namespace JSX {
-  interface Element extends any {}
+  interface Element {}
   interface IntrinsicElements {
     [elemName: string]: any;
   }

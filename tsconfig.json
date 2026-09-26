@@ -14,14 +14,15 @@
     "baseUrl": ".",
     "ignoreDeprecations": "6.0",
     "paths": {
-      "react": ["./node_modules/react/index.d.ts"],
-      "react/jsx-runtime": ["./node_modules/react/jsx-runtime.d.ts"],
-      "react/jsx-dev-runtime": ["./node_modules/react/jsx-dev-runtime.d.ts"],
-      "motion/react": ["./node_modules/motion/react/index.d.ts"]
+      "react": ["./node_modules/react/index.d.ts", "./types/react/index.d.ts"],
+      "react/jsx-runtime": ["./node_modules/react/jsx-runtime.d.ts", "./types/react/jsx-runtime.d.ts"],
+      "react/jsx-dev-runtime": ["./node_modules/react/jsx-dev-runtime.d.ts", "./types/react/jsx-dev-runtime.d.ts"],
+      "motion/react": ["./node_modules/motion/react/index.d.ts", "./types/motion/react/index.d.ts"]
     }
   },
   "include": [
     "components/**/*",
+    "types/**/*",
     "node_modules/react/*.d.ts",
     "node_modules/motion/react/*.d.ts"
   ]
