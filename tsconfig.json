@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowJs": true,
+    "typeRoots": ["./node_modules"],
+    "baseUrl": ".",
+    "paths": {
+      "react": ["./node_modules/react"],
+      "react/jsx-runtime": ["./node_modules/react/jsx-runtime.d.ts"],
+      "motion/react": ["./node_modules/motion/react"]
+    }
+  },
+  "include": [
+    "components/**/*"
+  ]
+}
