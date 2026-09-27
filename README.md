@@ -43,11 +43,14 @@ Open `http://127.0.0.1:8001`. FastAPI serves the frontend and API together; the 
 
 - `GET /api/health` — Service health probe.
 - `POST /api/auth/login` — Authenticate and receive a signed session cookie.
+- `POST /api/auth/admin-login` — Authenticate an administrator account and receive a signed session cookie.
 - `GET /api/auth/me` — Retrieve the currently authenticated user.
 - `POST /api/auth/logout` — Revoke the session cookie and sign out.
 - `POST /api/generate-audio` — Queue asynchronous audio synthesis requests.
 - `GET /api/generate-audio/{job_id}` — Query status of audio generation jobs.
 - `GET /api/admin/overview` — Admin-only runtime overview.
+
+The dedicated administrator sign-in page is available at `/admin-login`. It uses the same secure login form and accepts only accounts configured with the `admin` role.
 
 ## Infrastructure Status
 
