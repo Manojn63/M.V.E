@@ -244,6 +244,19 @@ def health() -> dict[str, str]:
 
 @app.post("/api/auth/login")
 def login(payload: LoginPayload, response: Response) -> dict[str, str]:
+	return authenticate(payload, response)
+
+
+@app.post("/api/auth/admin-login")
+def admin_login(payload: LoginPayload, response: Response) -> dict[str, str]:
+	return authenticate(payload, response, required_role="admin")
+
+
+def authenticate(
+	payload: LoginPayload,
+	response: Response,
+	required_role: Optional[Role] = None,
+) -> dict[str, str]:
 	username = payload.username.strip().lower()
 	account = find_user(username)
 	if account:
@@ -254,6 +267,8 @@ def login(payload: LoginPayload, response: Response) -> dict[str, str]:
 	if not account:
 		raise HTTPException(status_code=401, detail="Invalid email or password.")
 	role: Role = "admin" if str(account["role"]) == "admin" else "user"
+	if required_role is not None and role != required_role:
+		raise HTTPException(status_code=401, detail="Invalid email or password.")
 	set_session_cookie(response, username, role)
 	return {"username": username, "role": role}
 
@@ -331,6 +346,11 @@ def admin_overview(current_user: dict = Depends(require_admin)) -> dict:
 
 
 FRONTEND_DIR = BASE_DIR
+
+
+@app.get("/admin-login", response_class=HTMLResponse)
+def admin_login_page() -> FileResponse:
+	return FileResponse(FRONTEND_DIR / "login.html")
 
 
 @app.get("/", response_class=HTMLResponse)
