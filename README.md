@@ -1,6 +1,6 @@
-# M.V.E. — Master Video Editor
+# M.R-V.E. — Master Video Editor
 
-M.V.E. is a high-performance single-page creative editing studio with local video preview, an interactive timeline, multi-track layout, creative workflow views, and a FastAPI backend with cryptographic session authentication.
+M.R-V.E. is a high-performance single-page creative editing studio with local video preview, an interactive timeline, multi-track layout, creative workflow views, and a FastAPI backend with cryptographic session authentication.
 
 ---
 
@@ -51,7 +51,9 @@ Open `http://127.0.0.1:8001`. FastAPI serves the frontend and API together; the 
 
 ## Infrastructure Status
 
-There is no database, ORM schema, migration system, persistent user store, background job broker, object storage, or video/audio rendering worker configured. No database migrations are required for this in-memory prototype. The admin overview reports only actual process/configuration state; user management and influencer-directory operations are not yet implemented. Complete these services, add rate limiting, password reset, audit logs, and TLS before production deployment. Set `MVE_COOKIE_SECURE=true` when serving over HTTPS.
+Authentication uses a local SQLite database at `MVE_DATABASE_PATH` (default `backend/mve.db`). The database creates `users` and `sessions` tables at startup and imports legacy users from `backend/users.json` once. User records contain Argon2 hashes only; sessions are signed, stored server-side, expiring, and revocable on logout. Audio jobs remain in memory because no generation worker is configured.
+
+For production, put the SQLite file on a persistent volume, set `MVE_COOKIE_SECURE=true` behind HTTPS, keep `.env` outside version control, and add rate limiting, password reset, audit logs, backups, and monitoring before public exposure.
 
 ---
 
@@ -69,7 +71,7 @@ uvicorn backend.main:app --host 0.0.0.0 --port $PORT
 ```bash
 git init
 git add .
-git commit -m "M.V.E. Master Video Editor with unified dark studio theme and admin authentication"
+git commit -m "M.R-V.E. Master Video Editor with unified dark studio theme and admin authentication"
 git branch -M main
 git remote add origin https://github.com/<your-username>/<your-repo-name>.git
 git push -u origin main

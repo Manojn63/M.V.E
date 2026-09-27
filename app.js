@@ -205,7 +205,7 @@ async function loadAdminOverview() {
   document.querySelector("#admin-account-count").textContent = overview.configured_accounts;
   document.querySelector("#admin-audio-jobs").textContent = overview.audio_jobs_in_memory;
   document.querySelector("#admin-persistence").textContent = overview.persistence;
-  document.querySelector("#admin-status").textContent = "Admin API connected. Database persistence, workers, and storage are not configured.";
+  document.querySelector("#admin-status").textContent = "Admin API connected. User and session data are persisted in SQLite; media workers and storage providers are not configured.";
 }
 
 function shortsMarkup() {
@@ -310,7 +310,7 @@ function handleAction(action, button) {
 }
 
 function exportProject() {
-  const data = { product: "M.V.E.", title: state.title, duration_seconds: state.duration, source_file_name: video.src ? document.querySelector("#clip-label").textContent : null, note: "Project metadata only. Video rendering requires a configured export worker." };
+  const data = { product: "M.R-V.E.", title: state.title, duration_seconds: state.duration, source_file_name: video.src ? document.querySelector("#clip-label").textContent : null, note: "Project metadata only. Video rendering requires a configured export worker." };
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
@@ -349,7 +349,7 @@ document.querySelector("#add-track").addEventListener("click", () => { const nam
 document.querySelector("#analyze-button").addEventListener("click", () => { setAssistant("Analyzing the clip for scene changes, speech, pacing and possible highlights…", "thinking"); window.setTimeout(() => setAssistant(video.src ? "Analysis services are not connected yet. Your footage remains local; no upload was made." : "Add a clip first, then I can prepare the analysis brief."), 1500); });
 document.querySelector("#voice-greeting").addEventListener("click", () => {
   if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return toast("Voice greeting unavailable", "Your browser does not provide speech synthesis.");
-  const greeting = new SpeechSynthesisUtterance("M.V.E. Master Video Editor-க்கு உங்களை அன்போடு வரவேற்கிறோம்!");
+  const greeting = new SpeechSynthesisUtterance("M.R-V.E. Master Video Editor-க்கு உங்களை அன்போடு வரவேற்கிறோம்!");
   greeting.lang = "ta-IN";
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(greeting);
