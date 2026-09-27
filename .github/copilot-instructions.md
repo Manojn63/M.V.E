@@ -1,6 +1,6 @@
-# M.V.E. Workspace Instructions
+# M.R-V.E. Workspace Instructions
 
-- Keep the official product name exactly `M.V.E.` and the full name `Master Video Editor`.
+- Keep the official product name exactly `M.R-V.E.` and the full name `Master Video Editor`.
 - The frontend is a dependency-free single-page app in `index.html`, `styles.css`, and `app.js`.
 - Keep SPA navigation in `data-view-link` / `data-panel`; do not add separate HTML pages for product areas.
 - Backend endpoints live in `backend/main.py` and use FastAPI/Pydantic. Do not imply provider-backed AI, persistence, or rendering exists until it is implemented and validated.

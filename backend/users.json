@@ -1,0 +1,39 @@
+{
+  "e2e-22fb2150@example.com": {
+    "email": "e2e-22fb2150@example.com",
+    "name": "E2E Test",
+    "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$IWpVu7hnIu0QljJPkgGPEg$cxO6SXmmS3QdPtQYLhfWiKHWdB1zTJhhEdvRxBt+YdY",
+    "role": "user"
+  },
+  "e2e-b224f9ff@example.com": {
+    "email": "e2e-b224f9ff@example.com",
+    "name": "E2E Test",
+    "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$SakDhXTiwYgpwMHo43zcGA$cZutSFjkPeI6KsJYvHZqhi9AEqP1RD0l7T9v8SKyuQw",
+    "role": "user"
+  },
+  "e2e-be431925@example.com": {
+    "email": "e2e-be431925@example.com",
+    "name": "E2E Test",
+    "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$dwb7hQtLhX1wdGyQ8J6wdg$A61HoNBVD+V5nWMCXHmmkC6mT3Ak8L3KPkkg4kDej0o",
+    "role": "user"
+  },
+  "manojn6369242988@gmail.com": {
+    "email": "manojn6369242988@gmail.com",
+    "name": "Manoj n",
+    "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$pee4LfuU/NeKXAXfykA3vQ$idcaZbbRNfQwbMW56jmdfcDtuITEMfPeDgvXBLY5hr0",
+    "role": "user"
+  },
+  "natatajmanoj28@gmail.com": {
+    "created_at": "2026-09-27T04:48:42.932626+00:00",
+    "email": "natatajmanoj28@gmail.com",
+    "name": "manoj n",
+    "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$qmmaGVC/b8Jjd1cb7XMrBg$F8Q+KBvoQ1WrwmWig0ZHOlouTfzjAejNKeRXfXQO/xw",
+    "role": "user"
+  },
+  "verify-04833072@example.com": {
+    "email": "verify-04833072@example.com",
+    "name": "API Verification",
+    "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$6y4XQ8PPrxHwzY6hn0rgPQ$XLuW43euwfKNrPSSa5KRtz5mZx5iQ09xHelFT4ayMqY",
+    "role": "user"
+  }
+}

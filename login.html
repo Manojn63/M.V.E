@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#101211" />
-    <meta name="description" content="Sign in to M.V.E. Master Video Editor, private creative workspace." />
-    <title>Sign in | M.V.E. Master Video Editor</title>
+    <meta name="description" content="Sign in to M.R-V.E. Master Video Editor, private creative workspace." />
+    <title>Sign in | M.R-V.E. Master Video Editor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -21,24 +21,29 @@
       <span class="beam beam-four"></span>
     </div>
 
-    <div class="login-watermark" aria-hidden="true">M.V.E.</div>
+    <div class="login-watermark" aria-hidden="true">M.R-V.E.</div>
 
     <main class="login-screen">
       <section class="login-panel" aria-labelledby="login-title">
-        <a class="brand login-brand" href="/" aria-label="M.V.E. Master Video Editor">
+        <a class="brand login-brand" href="/" aria-label="M.R-V.E. Master Video Editor">
           <span class="brand-mark">
             <span></span>
             <span></span>
             <span></span>
           </span>
           <span class="brand-copy">
-            <strong>M.V.E.</strong>
+            <strong>M.R-V.E.</strong>
             <small>MASTER VIDEO EDITOR</small>
           </span>
         </a>
 
         <div class="login-eyebrow">
           <span class="eyebrow-line"></span> PRIVATE CREATIVE WORKSPACE
+        </div>
+
+        <div class="auth-toggle" aria-label="Authentication mode selector">
+          <button class="auth-tab is-active" type="button" data-auth-mode="login">Sign In</button>
+          <button class="auth-tab" type="button" data-auth-mode="register">Sign Up</button>
         </div>
 
         <h1 id="login-title">Welcome back.</h1>
@@ -59,6 +64,23 @@
                 autocomplete="username"
                 placeholder="you@example.com"
                 required
+              />
+            </div>
+          </div>
+
+          <div class="field-group" id="register-name-group" hidden>
+            <label class="login-label" for="register-name">
+              <span>Display name</span>
+              <span class="login-label-hint">Optional</span>
+            </label>
+            <div class="login-input-wrap">
+              <input
+                class="login-input"
+                id="register-name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                placeholder="Your studio name"
               />
             </div>
           </div>
@@ -90,7 +112,7 @@
         </form>
 
         <p class="login-footnote">
-          Secured with M.V.E. cryptographic session tokens.
+          Secured with M.R-V.E. cryptographic session tokens.
         </p>
       </section>
 
