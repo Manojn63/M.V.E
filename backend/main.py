@@ -54,6 +54,13 @@ class AudioJob(BaseModel):
     id: str
     status: AudioJobStatus
     created_at: datetime
+    prompt: str
+    genre: str = "Electronic"
+    mood: str = "Hopeful"
+    bpm: int = 112
+    duration_seconds: int = 30
+    energy: float = 0.65
+    instruments: list[str] = Field(default_factory=list)
     request: AudioGenerationRequest
     message: str | None = None
 
@@ -264,6 +271,13 @@ async def generate_audio(
         id=str(uuid4()),
         status=AudioJobStatus.queued,
         created_at=datetime.now(timezone.utc),
+        prompt=request.prompt,
+        genre=request.genre,
+        mood=request.mood,
+        bpm=request.bpm,
+        duration_seconds=request.duration_seconds,
+        energy=request.energy,
+        instruments=request.instruments,
         request=request,
     )
     audio_jobs[job.id] = job

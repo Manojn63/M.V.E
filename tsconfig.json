@@ -5,18 +5,12 @@
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "skipLibCheck": true,
     "noEmit": true,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
-    "ignoreDeprecations": "5.0",
     "paths": {
       "react": [
         "./node_modules/react/index.d.ts",
