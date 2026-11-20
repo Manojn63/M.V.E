@@ -4,14 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#101211" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="M.R-V.E." />
     <meta name="description" content="M.R-V.E. Master Video Editor, an AI-assisted creative editing studio." />
     <title>M.R-V.E. | Master Video Editor</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <style>.app-shell[hidden],[data-admin-only][hidden]{display:none!important}.voice-greeting{margin:0 0 8px 37px;padding:3px 7px;border:1px solid #414a3c;border-radius:3px;background:#20271f;color:#d6e9ad;font-size:8px}</style>
     <script src="app.js" defer></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => {}); });
+      }
+    </script>
   </head>
   <body>
     <svg class="motion-field" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">

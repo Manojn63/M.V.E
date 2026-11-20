@@ -11,6 +11,7 @@ local .env file (already excluded from git by .gitignore).
 
 from __future__ import annotations
 
+import argparse
 import getpass
 import re
 import secrets
@@ -50,14 +51,40 @@ def prompt_password(label: str) -> str:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Configure M.R-V.E. accounts and session secret.")
+    parser.add_argument("--admin-email", help="Administrator email address")
+    parser.add_argument("--admin-password", help="Administrator password (min 8 characters)")
+    parser.add_argument("--user-email", default="", help="Standard user email address (optional)")
+    parser.add_argument("--user-password", default="", help="Standard user password (optional)")
+    args = parser.parse_args()
+
     print("M.R-V.E. account setup — generates local Argon2 password hashes.\n")
 
-    admin_email = prompt_email("Administrator", required=True)
-    admin_hash = hasher.hash(prompt_password("Administrator"))
+    if args.admin_email and args.admin_password:
+        if not EMAIL_RE.match(args.admin_email):
+            raise ValueError("Invalid administrator email address.")
+        if len(args.admin_password) < 8:
+            raise ValueError("Administrator password must be at least 8 characters.")
+        admin_email = args.admin_email.lower()
+        admin_hash = hasher.hash(args.admin_password)
+    else:
+        admin_email = prompt_email("Administrator", required=True)
+        admin_hash = hasher.hash(prompt_password("Administrator"))
 
-    print("\nOptional standard-user account (press Enter on email to skip):")
-    user_email = prompt_email("Standard user", required=False)
-    user_hash = hasher.hash(prompt_password("Standard user")) if user_email else ""
+    if args.user_email and args.user_password:
+        if not EMAIL_RE.match(args.user_email):
+            raise ValueError("Invalid standard user email address.")
+        if len(args.user_password) < 8:
+            raise ValueError("Standard user password must be at least 8 characters.")
+        user_email = args.user_email.lower()
+        user_hash = hasher.hash(args.user_password)
+    elif args.admin_email and args.admin_password:
+        user_email = ""
+        user_hash = ""
+    else:
+        print("\nOptional standard-user account (press Enter on email to skip):")
+        user_email = prompt_email("Standard user", required=False)
+        user_hash = hasher.hash(prompt_password("Standard user")) if user_email else ""
 
     session_secret = secrets.token_urlsafe(48)
 

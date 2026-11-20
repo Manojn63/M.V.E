@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: mve-studio
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: MVE_COOKIE_SECURE
+        value: "true"
+      - key: MVE_ADMIN_EMAIL
+        sync: false
+      - key: MVE_ADMIN_PASSWORD_HASH
+        sync: false
+      - key: MVE_SESSION_SECRET
+        generateValue: true

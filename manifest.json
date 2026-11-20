@@ -1,0 +1,32 @@
+{
+  "name": "M.R-V.E. — Master Video Editor",
+  "short_name": "M.R-V.E.",
+  "description": "High-performance creative editing studio with video preview and multi-track timeline.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#101211",
+  "theme_color": "#101211",
+  "orientation": "any",
+  "categories": ["multimedia", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

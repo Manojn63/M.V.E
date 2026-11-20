@@ -51,9 +51,9 @@ SESSION_SECRET = os.environ.get("MVE_SESSION_SECRET", "").strip()
 COOKIE_SECURE = os.environ.get("MVE_COOKIE_SECURE", "false").lower() == "true"
 
 if len(SESSION_SECRET) < 32:
-	raise RuntimeError("MVE_SESSION_SECRET must contain at least 32 characters.")
+	raise RuntimeError("MVE_SESSION_SECRET must contain at least 32 characters. Run 'python backend/configure_accounts.py' to generate your local .env file.")
 if not ADMIN_EMAIL or not ADMIN_PASSWORD_HASH:
-	raise RuntimeError("MVE_ADMIN_EMAIL and MVE_ADMIN_PASSWORD_HASH are required.")
+	raise RuntimeError("MVE_ADMIN_EMAIL and MVE_ADMIN_PASSWORD_HASH are required. Run 'python backend/configure_accounts.py' to configure the administrator account.")
 
 SESSION_COOKIE_NAME = "mve_session"
 SESSION_TTL_SECONDS = 7 * 24 * 60 * 60
